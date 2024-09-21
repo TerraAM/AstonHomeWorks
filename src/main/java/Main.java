@@ -205,10 +205,7 @@ public class Main {
 		int sum = fNum + sNum;
 		
 		//Условия проверки и вывод
-		if (sum >= 10 && sum <=20) {
-			return true;
-		}
-		return false;
+		return sum >= 10 && sum <=20;
 	}
 	
 	/* Пункт 6:
@@ -217,7 +214,7 @@ public class Main {
 	 * num >= 0: вернуть true"
 	 * num < 0: вернуть false*/
 	public Boolean isNumPositive (int num) {
-		return num >= 0 ? true : false; //Тернарный оператор для сокращения кода и вывода нужного ответа
+		return num >= 0; //Тернарный оператор для сокращения кода и вывода нужного ответа
 	}
 	
 	/* Пункт 7:
@@ -226,7 +223,7 @@ public class Main {
 	 * num < 0: вернуть true"
 	 * num >= 0: вернуть false*/
 	public Boolean isNumNegative (int num) {
-		return num < 0 ? true : false; //Тернарный оператор для сокращения кода и вывода нужного ответа
+		return num < 0; //Тернарный оператор для сокращения кода и вывода нужного ответа
 	}
 	
 	/* Пункт 8:
@@ -246,10 +243,7 @@ public class Main {
 	 * Если не подходит под условие: вернуть false*/
 	public Boolean isLeapYear (int year) {
 		//Условия проверки и вывод
-		if((year % 4 == 0) && (year % 100 != 0) && (year % 400 == 0)) {
-			return true;
-		}
-		return false;
+		return (year % 4 == 0) && (year % 100 != 0) && (year % 400 == 0);
 	}
 	
 	/* Пункт 10:
