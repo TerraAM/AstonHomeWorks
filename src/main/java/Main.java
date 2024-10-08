@@ -1,38 +1,73 @@
-package main.java; //Определяют пакет, в котором находится файл
+package main.java;//Определяют пакет, в котором находится файл
 
-import java.math.BigDecimal; //Импортируем конкретный тип для денежного формата
-
-import main.java.entity.*; //Импортируем все классы из указанной директории
+/*Блок импорта необходимых классов*/
+import main.java.animals.*;
+import main.java.items.Bowl;
+import main.java.figures.*;
 
 /*Класс старта программы*/
-public class Main
-{
-    public static void main( String[] args )
-    {
-    	/*Задаем массив из 5 объектов класса Employee*/
-        Employee [] personal = {
-        		new Employee("Иван Сергеевич Петров","Техник","ivan.petrov@mail.com","+79123456789",new BigDecimal(45000),40),//Не создавая лишних переменных, создаем переменную(BigDecimal) в конструктор при создании объекта
-        		new Employee("Ольга Николаевна Смирнова","Бухгалтер","olga.smirnova@mail.com","+79134567890",new BigDecimal(50000),40),
-        		new Employee("Алексей Андреевич Сидоров","Менеджер по продажам","alexey.sidorov@mail.com","+79145678901",new BigDecimal(55000),40),
-        		new Employee("Мария Павловна Иванова","Секретарь","maria.ivanova@mail.com","+79156789012",new BigDecimal(35000),40),
-        		new Employee("Дмитрий Викторович Васильев","Инженер","dmitry.vasilyev@mail.com","+79167890123",new BigDecimal(60000),40),
-        };
-        
-        /*Перебираем все элементы массива*/
-        for(Employee emp : personal) {
-        	System.out.println(emp); //Простой вывод данных об обекте (выполняется при помощи переобределенного класса toString)
-        }
-        
-        System.out.println();//Дабавлен перенос строки, для того, что бы было удобнее просматривать информацию
-        
-        
-        Park park = new Park("Сказочный мир", "Москва");//Объявляем и инициализируем объект класса Park через конструктор с параметрами
-        
-        /*Создаем для него аттракционы*/
-        park.addAttraction("Американские горки", "10:00 - 18:00", new BigDecimal(300));
-        park.addAttraction("Колесо обозрения", "09:00 - 20:00", new BigDecimal(150.));
-        park.addAttraction("Дом с привидениями", "11:00 - 22:00", new BigDecimal(250));
-        
-        System.out.println(park);//Выводим информацию о парке
-    }
+public class Main {
+	
+	public static void main(String [] args) {
+		
+		/*---------Задание 1---------*/
+		Cat cat1 = new Cat("Пупс");//Инициализация класса Cat
+		/*Блок методов класса*/
+		cat1.run(50);//Бег на дистанцию 50 метров (true)
+		cat1.run(250);//Бег на дистанцию 250 метров (false)
+		cat1.run(-50);//Бег на отрицательную дистанцию (false)
+		cat1.swim(10);//Попытка заплыва (false)
+		
+		Dog dog1 = new Dog("Вупс");//Инициализация класса Dog
+		dog1.run(250);//Бег на дистанцию 250 метров (true)
+		dog1.run(550);//Бег на дистанцию 550 метров (false)
+		dog1.run(-50);//Бег на отрицательную дистанцию (false)
+		dog1.swim(9);//Заплыв на дистанцию 9 метров (true)
+		dog1.swim(11);//Заплыв на дистанцию 11 метров (true)
+		dog1.swim(-9);//Заплыв на отрицательную дистанцию (false)
+		
+		Animal cat2 = new Cat("Питомец кот");//Инициализация класса через его наследника (демонстрация принципа полиморфизма)
+		Animal dog2 = new Dog("Питомец собака");//Инициализация класса через его наследника (демонстрация принципа полиморфизма)	
+		
+		System.out.println(cat2.getCount());//Вывод информации о кол-ве кошек
+		System.out.println(dog2.getCount());//Вывод информации о кол-ве собак
+		System.out.println(Animal.getAnimalCount());//Вывод информации о кол-ве животных
+		
+		/*---------Расширение задания 1---------
+		 * Создание массива кошек (7 шт)*/
+		Cat[] cats = { 
+				new Cat("Пупс",13),//Конструктор с передачей имени и сколько ест кот
+				new Cat("Мупс",9),
+				new Cat("Вупс",10),
+				new Cat("Бупс",11),
+				new Cat("Тупс",8),
+				new Cat("Рупс",5),
+				new Cat("Купс",10)};
+		
+		Bowl bowl = new Bowl(50);//Создание миска на 50 единиц еды
+		/*Кормим всех котов из миски*/
+		for(Cat cat : cats) {
+			cat.eat(bowl);
+			System.out.printf("%s, голоден? %b%n",cat.getName(),cat.isHunger());//Проверяем, голодн ли кот
+		}
+		
+		/*---------Задание 2---------*/
+		Сircle circle = new Сircle(7);//Реализация класса "Круг" с передачей параметра радиуса
+		Rectangle rectangle = new Rectangle(12,5);//Реализация класса "Прямоугольник" с передачей параметров сторон (a,b)
+		Triangle triangle = new Triangle(5,12,7);//Реализация класса "Триугольник" с передачей параметров сторон (a,b,c)
+		
+		/*Блок вывода информации о площадях и перемитрах фигур*/
+		System.out.println("\n-------Круг-------");
+		System.out.printf("Периметр: %f%n",circle.perimeter());
+		System.out.printf("Площадь: %f%n",circle.area());
+
+		System.out.println("\n-------Прямоугольник-------");
+		System.out.printf("Периметр: %f%n",rectangle.perimeter());
+		System.out.printf("Площадь: %f%n",rectangle.area());
+		
+		System.out.println("\n-------Триугольник-------");
+		System.out.printf("Периметр: %f%n",triangle.perimeter());
+		System.out.printf("Площадь: %f%n",triangle.area());
+		
+	}
 }
