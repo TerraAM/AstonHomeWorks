@@ -1,4 +1,4 @@
-package main.java.animals;//Определяют пакет, в котором находится файл
+package main.java.lesson11.animals;//Определяют пакет, в котором находится файл
 
 /*Абстрактный класс родитель для животных*/
 public abstract class Animal {

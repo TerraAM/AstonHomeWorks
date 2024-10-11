@@ -1,4 +1,4 @@
-package main.java.items;//Определяют пакет, в котором находится файл
+package main.java.lesson11.items;//Определяют пакет, в котором находится файл
 
 /*Класс миски с едой*/
 public class Bowl {

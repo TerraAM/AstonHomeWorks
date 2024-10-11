@@ -1,4 +1,4 @@
-package main.java.animals;//Определяют пакет, в котором находится файл
+package main.java.lesson11.animals;//Определяют пакет, в котором находится файл
 
 /*Класс-наследник собаки от животного*/
 public class Dog extends Animal{

@@ -1,22 +1,27 @@
-package main.java.figures;//Определяют пакет, в котором находится файл
+package main.java.lesson11.figures;//Определяют пакет, в котором находится файл
 
 /*Импортируем необходимые интерфейсы*/
-import main.java.interfaces.*;
+import main.java.lesson11.interfaces.IPerimeter;
+import main.java.lesson11.interfaces.IArea;
+import main.java.lesson11.interfaces.IColorfill;
 
-/*Класс триугольника реализующий интерфейсы*/
-public class Сircle implements IPerimeter, IArea, IColorfill{
+/*Класс прямоугольника реализующий интерфейсы*/
+public class Rectangle implements IPerimeter, IArea, IColorfill {
 
 	/*Блок с приватными полями*/
-	double radius;//Поле значения радиуса
+	double a,b;//Поля значений для сторон
 	String BackGroundColor;//Поле цвета фона
 	String BorderColor;//Поле цвета границ
-	
+
 	/*Реализация пустого конструктора класса*/
-	public Сircle() {}
+	public Rectangle() {}
 	/*Реализация конструктора класса*/
-	public Сircle(double radius) {
-		if (radius > 0) {//Защита от отрицательных и нулевых полей
-			this.radius = radius;			
+	public Rectangle(double a,double b) {
+		if (a > 0) {//Защита от отрицательных и нулевых полей
+			this.a = a;			
+		}
+		if (b > 0) {//Защита от отрицательных и нулевых полей
+			this.b = b;			
 		}
 	}
 	
@@ -43,33 +48,37 @@ public class Сircle implements IPerimeter, IArea, IColorfill{
 	public void setBorderColor(String color) {
 		BorderColor = color;
 	}
-	
-	/*Метод get для значения радиуса*/
-	public double getRadius() {
-		return radius;
+
+	/*Метод get для зачения одной из сторон*/
+	public double getA() {
+		return a;
 	}
-	
-	/*Метод set для значения радиуса*/
-	public void setRadius(double radius) {
-		if (radius >= 0) {
-			this.radius = radius;			
+	/*Метод set для зачения одной из сторон*/
+	public void setA(double a) {
+		if (a >= 0) {
+			this.a = a;			
 		}
 	}
-	
-	/*Метод get для диаметра*/
-	public double getDiameter() {
-		return radius * 2;
+	/*Метод get для зачения одной из сторон*/
+	public double getB() {
+		return b;
 	}
-	
+	/*Метод set для зачения одной из сторон*/
+	public void setB(double b) {
+		if (b >= 0) {
+			this.b = b;			
+		}
+	}
 	/*Переопределение метода для вычисления площади фигуры*/
 	@Override
 	public double area() {
-		return Math.PI * Math.pow(radius, 2);
+		return a * b;
 	}
 
 	/*Переопределение метода для вычисления периметра фигуры*/
 	@Override
 	public double perimeter() {
-		return 2 * Math.PI * radius;
+		return (a + b) * 2;
 	}
+	
 }

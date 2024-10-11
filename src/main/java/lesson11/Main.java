@@ -1,9 +1,13 @@
-package main.java;//Определяют пакет, в котором находится файл
+package main.java.lesson11;//Определяют пакет, в котором находится файл
 
 /*Блок импорта необходимых классов*/
-import main.java.animals.*;
-import main.java.items.Bowl;
-import main.java.figures.*;
+import main.java.lesson11.animals.Animal;
+import main.java.lesson11.animals.Cat;
+import main.java.lesson11.animals.Dog;
+import main.java.lesson11.items.Bowl;
+import main.java.lesson11.figures.Rectangle;
+import main.java.lesson11.figures.Triangle;
+import main.java.lesson11.figures.Сircle;
 
 /*Класс старта программы*/
 public class Main {

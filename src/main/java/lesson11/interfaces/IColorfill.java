@@ -1,4 +1,4 @@
-package main.java.interfaces;//Определяют пакет, в котором находится файл
+package main.java.lesson11.interfaces;//Определяют пакет, в котором находится файл
 
 /*Интерфейс для цветов фона и границ*/
 public interface IColorfill {

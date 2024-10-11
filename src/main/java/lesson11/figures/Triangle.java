@@ -1,25 +1,30 @@
-package main.java.figures;//Определяют пакет, в котором находится файл
+package main.java.lesson11.figures;//Определяют пакет, в котором находится файл
 
 /*Импортируем необходимые интерфейсы*/
-import main.java.interfaces.*;
+import main.java.lesson11.interfaces.IPerimeter;
+import main.java.lesson11.interfaces.IArea;
+import main.java.lesson11.interfaces.IColorfill;
 
-/*Класс прямоугольника реализующий интерфейсы*/
-public class Rectangle implements IPerimeter, IArea, IColorfill {
+/*Класс триугольника реализующий интерфейсы*/
+public class Triangle implements IPerimeter, IArea, IColorfill{
 
 	/*Блок с приватными полями*/
-	double a,b;//Поля значений для сторон
+	double a,b,c;//Поля значений для сторон
 	String BackGroundColor;//Поле цвета фона
 	String BorderColor;//Поле цвета границ
-
+	
 	/*Реализация пустого конструктора класса*/
-	public Rectangle() {}
+	public Triangle() {}
 	/*Реализация конструктора класса*/
-	public Rectangle(double a,double b) {
+	public Triangle(double a, double b,double c) {
 		if (a > 0) {//Защита от отрицательных и нулевых полей
-			this.a = a;			
+			this.a = a;		
 		}
 		if (b > 0) {//Защита от отрицательных и нулевых полей
-			this.b = b;			
+			this.b = b;
+		}
+		if (c > 0) {//Защита от отрицательных и нулевых полей
+			this.c = c;
 		}
 	}
 	
@@ -51,32 +56,49 @@ public class Rectangle implements IPerimeter, IArea, IColorfill {
 	public double getA() {
 		return a;
 	}
+	
 	/*Метод set для зачения одной из сторон*/
 	public void setA(double a) {
 		if (a >= 0) {
 			this.a = a;			
 		}
 	}
+	
 	/*Метод get для зачения одной из сторон*/
 	public double getB() {
 		return b;
 	}
+	
 	/*Метод set для зачения одной из сторон*/
 	public void setB(double b) {
 		if (b >= 0) {
 			this.b = b;			
 		}
 	}
+	
+	/*Метод get для зачения одной из сторон*/
+	public double getC() {
+		return c;
+	}
+	
+	/*Метод set для зачения одной из сторон*/
+	public void setC(double c) {
+		if (c >= 0) {
+			this.c = c;			
+		}
+	}
+
 	/*Переопределение метода для вычисления площади фигуры*/
 	@Override
 	public double area() {
-		return a * b;
+		double p = perimeter()/2;
+		return Math.sqrt(p * (p-a) * (p - b) * (p - c));
 	}
 
 	/*Переопределение метода для вычисления периметра фигуры*/
 	@Override
 	public double perimeter() {
-		return (a + b) * 2;
+		return a + b + c;
 	}
-	
+
 }

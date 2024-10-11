@@ -1,7 +1,7 @@
-package main.java.animals;//Определяют пакет, в котором находится файл
+package main.java.lesson11.animals;//Определяют пакет, в котором находится файл
 
 /*Блок импорта необходимых классов*/
-import main.java.items.Bowl;
+import main.java.lesson11.items.Bowl;
 
 /*Класс-наследник кошки от животного*/
 public class Cat extends Animal{
