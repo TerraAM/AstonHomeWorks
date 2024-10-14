@@ -12,15 +12,19 @@ public class ArrayHandler {
 	 * что этот метод может выкинуть определенные ошибки*/
 	public int getArraySum(String [][] array) throws MyArraySizeException,MyArrayDataException{
 			
-		if (array.length != 4 || array[0].length != 4) {//Условие на проверку размерности вводимого массива
-				throw new MyArraySizeException("Размер массива должен быть 4x4. Получен: " 
-						+ array.length + "x" + (array.length > 0 ? array[0].length : 0));//Задание сообщения для ошбики
+		String errorMessage = "Размер массива должен быть 4x4. Получен: " 
+				+ array.length + "x" + (array.length > 0 ? array[0].length : 0);
+		if (array.length != 4) {//Условие на проверку размерности вводимого массива
+				throw new MyArraySizeException(errorMessage);//Задание сообщения для ошбики
 			}
 			int sum = 0;//Инициализация переменной для получения суммы
 	
 	        // Проверка элементов массива и их сумма
 	        for (int i = 0; i < array.length; i++) {
 	            for (int j = 0; j < array[i].length; j++) {
+	            	if (array[0].length != 4) {
+	            		throw new MyArraySizeException(errorMessage);
+	            	}
 	                try {
 	                    sum += Integer.parseInt(array[i][j]);//Конвертируем String элемент в int
 	                } catch (NumberFormatException e) {//Если конвертация не прошла, обрабатываем полученную ошибку
