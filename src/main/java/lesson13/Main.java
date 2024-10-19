@@ -28,12 +28,6 @@ public class Main {
 			    "lemon" // 1
 			};
 		
-		/*Вывод списка уникальных слов*/
-		System.out.println("Список уникальных слов:");
-		for(String word : handler.getUnicWords(words)) {
-			System.out.println(word);
-		}
-		
 		/*Вывод коллекции уникальных слов с их кол-вом совпадения*/
 		System.out.println("Коллекция уникальных слов c кол-вом совпадений:");
 		for(Map.Entry<String, Integer> el : handler.getWordFrequencies(words).entrySet()) {
