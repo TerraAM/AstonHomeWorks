@@ -13,18 +13,22 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import io.github.bonigarcia.wdm.WebDriverManager;
+import lesson15.helpers.ModalWindow;
 
 /*Класс теста блока онлайн пополнения (mts.by)*/
 public class MTSOnlinePaymentTest {
 
 	    WebDriver driver;//Объявляем объект WebDriver для управления браузером
-
+	    //Объявляем объект modalWindowChrome для управления модальными окнами
+	    ModalWindow modalWindowChrome = new ModalWindow();
+	    
 	    /*Этот метод будет выполняться перед всеми тестами*/
 	    @BeforeAll
 	    static void setupClass() {
 	    	/*Инициализация WebDriverManager, чтобы 
 	    	 * загрузить и настроить WebDriver (в данном случае ChromeDriver)*/
 	        WebDriverManager.chromedriver().setup();
+	        
 	    }
 
 	    /*Этот метод будет выполняться перед каждым тестом*/
@@ -32,28 +36,14 @@ public class MTSOnlinePaymentTest {
 	    void setupTest() {
 	        driver = new ChromeDriver();//Создаем новый экземпляр браузера Chrome перед каждым тестом
 	        driver.get("https://mts.by");//Открываем сайт MTS.by
-	        acceptCookies();//Вызываем метод для принятия куки, если на сайте появляется баннер с предложением принять их
+	        //Вызываем метод для принятия куки, если на сайте появляется баннер с предложением принять их
+	        modalWindowChrome.coockie.accept(driver);
 	    }
 
 	    /*Этот метод будет выполняться после каждого теста*/
 	    @AfterEach
 	    void teardown() {
 	        driver.quit();//Закрываем браузер после выполнения теста, чтобы не перегружать память
-	    }
-
-	    /*Метод для принятия куки, если баннер с куки появляется на сайте*/
-	    void acceptCookies() {
-	        try {
-	            // Попробуем найти кнопку "Принять" и нажать её
-	            WebElement acceptCookiesButton = driver.findElement(By.xpath("//button[text()='Принять']"));
-	            // Если кнопка отображается, кликаем по ней
-	            if (acceptCookiesButton.isDisplayed()) {
-	                acceptCookiesButton.click();
-	            }
-	        } catch (Exception e) {
-	            //Если не нашли элемент куки, тест продолжается без ошибок
-	            System.out.println("Баннер cookie не найден или уже принят.");
-	        }
 	    }
 	    
 	    /*Тест для проверки названия блока "Онлайн пополнение без комиссии"*/
