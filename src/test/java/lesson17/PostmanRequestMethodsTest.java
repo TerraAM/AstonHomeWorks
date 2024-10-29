@@ -17,14 +17,12 @@ public class PostmanRequestMethodsTest {
 	public void testGetRequest() {
 	    //Используем метод given() для настройки начальных параметров запроса
 	    given()
-	        .log().all()//Логируем все детали запроса для отладки
 	        .cookie("sails.sid=s%3Arkkk4dmbbbAPKE1LJDEVh_CE1lnGzBYE.w0Mk2D6Jjlv0QPcUlOSFTzpVrooJDylAA%2F%2F1d3ycPek")//Добавляем куку для сессии
 	        .when()
 	            .get(baseURL + "/get")//Выполняем get-запрос к указанному URL
 	        .then()
 	            .statusCode(200)//Проверяем, что статус ответа равен 200 (ОК)
-	            .assertThat()//Указываем, что будем делать утверждения на основании ответа
-	            .extract().response();//Извлекаем ответ для последующего анализа
+	            .assertThat();//Указываем, что будем делать утверждения на основании ответа
 	}
 
 	//Объявление теста проверки post запроса
@@ -33,7 +31,6 @@ public class PostmanRequestMethodsTest {
 	public void testPostRawTextRequest() {
 	    System.out.println("\nПроверка Post запроса с телом");
 	    given()
-	        .log().all()//Логируем все детали запроса
 	        .cookie("sails.sid=s%3Arkkk4dmbbbAPKE1LJDEVh_CE1lnGzBYE.w0Mk2D6Jjlv0QPcUlOSFTzpVrooJDylAA%2F%2F1d3ycPek")//Добавляем куку для сессии
 	        .contentType("application/json; charset=UTF-8")//Указываем тип содержимого как json
 	        .body("{\n    \"test\": \"Pup\"\n}")//Устанавливаем тело запроса в формате json
@@ -43,8 +40,7 @@ public class PostmanRequestMethodsTest {
 	            .log().all()//Логируем детали ответа
 	            .statusCode(200)//Проверяем, что статус ответа равен 200 (ОК)
 	            .assertThat()//Указываем, что будем делать утверждения на основании ответа
-	            .body("data.test", notNullValue())//Проверяем, что поле "test" не равно null
-	            .extract().response();//Извлекаем ответ для последующего анализа
+	            .body("data.test", notNullValue());//Проверяем, что поле "test" не равно null
 	}
 
 	//Объявление теста для проверки post запроса с формой
@@ -52,7 +48,6 @@ public class PostmanRequestMethodsTest {
 	public void testPostFormDataRequest() {
 	    System.out.println("\nПроверка Post запроса с формой");
 	    given()
-	        .log().all()//Логируем все детали запроса
 	        .cookie("sails.sid=s%3Arkkk4dmbbbAPKE1LJDEVh_CE1lnGzBYE.w0Mk2D6Jjlv0QPcUlOSFTzpVrooJDylAA%2F%2F1d3ycPek")//Добавляем куку для сессии
 	        .contentType("application/x-www-form-urlencoded; charset=UTF-8")//Указываем тип содержимого как form-urlencoded
 	        .formParam("foo1", "bar1")//Добавляем параметр формы "foo1"
@@ -64,8 +59,7 @@ public class PostmanRequestMethodsTest {
 	            .statusCode(200)//Проверяем, что статус ответа равен 200 (ОК)
 	            .assertThat()//Указываем, что будем делать утверждения на основании ответа
 	            .body("form.foo1", equalTo("bar1"))//Проверяем, что значение "foo1" соответствует "bar1"
-	            .body("form.foo2", equalTo("bar2"))//Проверяем, что значение "foo2" соответствует "bar2"
-	            .extract().response();//Извлекаем ответ для последующего анализа
+	            .body("form.foo2", equalTo("bar2"));//Проверяем, что значение "foo2" соответствует "bar2"
 	}
 
 	// Объявление теста для проверки put запроса
@@ -73,7 +67,6 @@ public class PostmanRequestMethodsTest {
 	public void testPutRequest() {
 	    System.out.println("\nПроверка Put запроса");
 	    given()
-	        .log().all()//Логируем все детали запроса
 	        .cookie("sails.sid=s%3Arkkk4dmbbbAPKE1LJDEVh_CE1lnGzBYE.w0Mk2D6Jjlv0QPcUlOSFTzpVrooJDylAA%2F%2F1d3ycPek") // Добавляем куку для сессии
 	        .contentType("text/plain; charset=UTF-8")//Указываем тип содержимого как текст
 	        .body("This is expected to be sent back as part of response body.")//Устанавливаем тело запроса
@@ -83,8 +76,7 @@ public class PostmanRequestMethodsTest {
 	            .log().all()//Логируем детали ответа
 	            .statusCode(200)//Проверяем, что статус ответа равен 200 (ОК)
 	            .assertThat()//Указываем, что будем делать утверждения на основании ответа
-	            .body("data", equalTo("This is expected to be sent back as part of response body."))//Проверяем, что возвращаемое поле "data" соответствует ожидаемому тексту
-	            .extract().response();//Извлекаем ответ для последующего анализа
+	            .body("data", equalTo("This is expected to be sent back as part of response body."));//Проверяем, что возвращаемое поле "data" соответствует ожидаемому тексту
 	}
 
 	//Объявление теста для проверки patch запроса
@@ -92,7 +84,6 @@ public class PostmanRequestMethodsTest {
 	public void testPatchRequest() {
 	    System.out.println("\nПроверка Patch запроса");
 	    given()
-	        .log().all() //Логируем все детали запроса
 	        .cookie("sails.sid=s%3Arkkk4dmbbbAPKE1LJDEVh_CE1lnGzBYE.w0Mk2D6Jjlv0QPcUlOSFTzpVrooJDylAA%2F%2F1d3ycPek")//Добавляем куку для сессии
 	        .contentType("text/plain; charset=UTF-8")//Указываем тип содержимого как текст
 	        .body("This is expected to be sent back as part of response body.")//Устанавливаем тело запроса
@@ -102,8 +93,7 @@ public class PostmanRequestMethodsTest {
 	            .log().all()//Логируем детали ответа
 	            .statusCode(200)//Проверяем, что статус ответа равен 200 (ОК)
 	            .assertThat()//Указываем, что будем делать утверждения на основании ответа
-	            .body("data", equalTo("This is expected to be sent back as part of response body."))//Проверяем, что возвращаемое поле "data" соответствует ожидаемому тексту
-	            .extract().response();//Извлекаем ответ для последующего анализа
+	            .body("data", equalTo("This is expected to be sent back as part of response body."));//Проверяем, что возвращаемое поле "data" соответствует ожидаемому тексту
 	}
 
 	//Объявление теста для проверки delete запроса
@@ -111,7 +101,6 @@ public class PostmanRequestMethodsTest {
 	public void testDeleteRequest() {
 	    System.out.println("\nПроверка Delete запроса");
 	    given()
-	        .log().all()//Логируем все детали запроса
 	        .cookie("sails.sid=s%3Arkkk4dmbbbAPKE1LJDEVh_CE1lnGzBYE.w0Mk2D6Jjlv0QPcUlOSFTzpVrooJDylAA%2F%2F1d3ycPek")//Добавляем куку для сессии
 	        .contentType("text/plain; charset=UTF-8")//Указываем тип содержимого как текст
 	        .body("This is expected to be sent back as part of response body.")//Устанавливаем тело запроса
@@ -121,7 +110,6 @@ public class PostmanRequestMethodsTest {
 	            .log().all()//Логируем детали ответа
 	            .statusCode(200)//Проверяем, что статус ответа равен 200 (ОК)
 	            .assertThat()//Указываем, что будем делать утверждения на основании ответа
-	            .body("data", equalTo("This is expected to be sent back as part of response body."))//Проверяем, что возвращаемое поле "data" соответствует ожидаемому тексту
-	            .extract().response();//Извлекаем ответ для последующего анализа
+	            .body("data", equalTo("This is expected to be sent back as part of response body."));//Проверяем, что возвращаемое поле "data" соответствует ожидаемому тексту
 	}
 }
