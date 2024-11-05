@@ -1,0 +1,4 @@
+-------------------------------------------------------------------------------
+Test set: lesson16.MTSOnlinePaymentTest
+-------------------------------------------------------------------------------
+Tests run: 11, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 84.25 s -- in lesson16.MTSOnlinePaymentTest
