@@ -5,7 +5,6 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 /*Блок импорта необходимых пакетов*/
 
-import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 
@@ -18,6 +17,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
+import io.qameta.allure.Step;
 import lesson16.pages.MTSOnlinePaymentPage;
 
 /*Класс теста блока онлайн пополнения (mts.by)*/
@@ -56,21 +56,21 @@ public class MTSOnlinePaymentTest {
 	    }
 	
 	    //Тест проверки названия блока 'Онлайн пополнение без комиссии'
-	    @DisplayName("Проверка названия блока")
+	    @Step("Проверка названия блока")
 	    @Test
 	    void checkBlockTitle() {
 	        assertThat(mtsOnlinePaymentPage.getBlockTitle()).isEqualTo(titleOnlinePayment);
 	    }
 	
 	    //Тест проверки наличия логотипов платежных систем
-	    @DisplayName("Проверка наличия логотипов платежных систем")
+	    @Step("Проверка наличия логотипов платежных систем")
 	    @Test
 	    void checkPaymentSystemLogos() {
 	        assertThat(mtsOnlinePaymentPage.areAllLogosDisplayed(expectedAltTexts)).isTrue();
 	    }
 	
 	    //Тест проверка ссылки 'Подробнее о сервисе'
-	    @DisplayName("Проверка ссылки 'Подробнее о сервисе'")
+	    @Step("Проверка ссылки 'Подробнее о сервисе'")
 	    @Test
 	    void checkMoreInfoButton() {
 	        assertThat(mtsOnlinePaymentPage
@@ -80,7 +80,7 @@ public class MTSOnlinePaymentTest {
 	    }
 	
 	    //Тест проверки работы формы 'Услуги связи'
-	    @DisplayName("Проверка работы формы 'Услуги связи':")
+	    @Step("Проверка работы формы 'Услуги связи':")
 	    @Test
 	    void checkFormSubmissionForConnection() {
 	        assertThat(mtsOnlinePaymentPage
@@ -90,35 +90,35 @@ public class MTSOnlinePaymentTest {
 	    }
 	    
 	    //Тест проверки placeholder для формы 'Услуги связи'
-	    @DisplayName("Проверка placeholder для формы 'Услуги связи'")
+	    @Step("Проверка placeholder для формы 'Услуги связи'")
 	    @Test
 	    void checkConnectionPlaceholders() {
 	        assertThat(mtsOnlinePaymentPage.checkConnectionPlaceholders()).isTrue();
 	    }
 
 	    //Тест проверки placeholder для формы 'Домашний интернет'
-	    @DisplayName("Проверка placeholder для формы 'Домашний интернет'")
+	    @Step("Проверка placeholder для формы 'Домашний интернет'")
 	    @Test
 	    void checkInternetPlaceholders() {
 	        assertThat(mtsOnlinePaymentPage.checkInternetPlaceholders()).isTrue();
 	    }
 
 	    //Тест проверки placeholder для формы 'Рассрочка'
-	    @DisplayName("Проверка placeholder для формы 'Рассрочка'")
+	    @Step("Проверка placeholder для формы 'Рассрочка'")
 	    @Test
 	    void checkInstalmentPlaceholders() {
 	        assertThat(mtsOnlinePaymentPage.checkInstalmentPlaceholders()).isTrue();
 	    }
 
 	    //Тест проверки placeholder для формы 'Задолженность'
-	    @DisplayName("Проверка placeholder для формы 'Задолженность'")
+	    @Step("Проверка placeholder для формы 'Задолженность'")
 	    @Test
 	    void checkArrearsPlaceholders() {
 	        assertThat(mtsOnlinePaymentPage.checkArrearsPlaceholders()).isTrue();
 	    }
 	    
 	    //Тест проверки текста в незаполненных полях модального окна оплаты
-	    @DisplayName("Модальное окно оплаты. Проверка текста в незаполненных полях")
+	    @Step("Модальное окно оплаты. Проверка текста в незаполненных полях")
 	    @Test
 	    void checkPaymentFrameLabelsText() {
 	        assertThat(mtsOnlinePaymentPage
@@ -128,7 +128,7 @@ public class MTSOnlinePaymentTest {
 	    }
 	    
 	    //Тест проверки отображения логотипов банковских компаний модального окна оплаты
-	    @DisplayName("Модальное окно оплаты. Проверка отображения логотипов банковских компаний:")
+	    @Step("Модальное окно оплаты. Проверка отображения логотипов банковских компаний:")
 	    @Test
 	    void checkPaymentFrameImg() {
 	        assertThat(mtsOnlinePaymentPage
@@ -138,7 +138,7 @@ public class MTSOnlinePaymentTest {
 	    }
 	    
 	    //Тест проверки отображения суммы на окне и на кнопке модального окна оплаты
-	    @DisplayName("Модальное окно оплаты. Проверка отображения суммы на окне и на кнопке:")
+	    @Step("Модальное окно оплаты. Проверка отображения суммы на окне и на кнопке:")
 	    @Test
 	    void checkPaymentFrameAmount() {
 	        assertThat(mtsOnlinePaymentPage
